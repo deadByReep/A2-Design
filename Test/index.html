@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A2 design test</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<header class="header">
+			<div class="header-navigation">
+				<nav class="header-nav header-nav__left">
+					<ul>
+						<li class="header-nav_elem "><a href="#">HOME</a></li>
+						<li class="header-nav_elem header_elem__left"><a href="#">ABOUT</a></li>
+						<li class="header-nav_elem header_elem__left"><a href="#">TEAM</a></li>
+						<li class="header-nav_elem header_elem__left"><a href="#">BOOKING</a></li>
+					</ul>
+				</nav>
+				<img src="img/Vector.svg" alt="LOGO" class="header-logo">
+				<nav class="header-nav header-nav__right">
+					<ul>
+						<li class="header-nav_elem header_elem__right"><a href="#">MENU</a></li>
+						<li class="header-nav_elem header_elem__right"><a href="#">GALERIE</a></li>
+						<li class="header-nav_elem header_elem__right"><a href="#">EVENTS</a></li>
+						<li class="header-nav_elem "><a href="#">CONTACT</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="header-content">
+				<h4 class="header_subtitle">RESTAURANT</h4>
+				<h1 class="header_title">FANCY SAILOR</h1>
+				<hr>
+				<div class="header-block">
+					<div class="header_button header_button__left btn">BOOK TABLE</div>
+					<div class="header_button header_button__right btn">EXPLORE</div>
+				</div>
+			</div>
+		</header>
+		<section class="about">
+			<div class="about-block">
+				<h4 class="about_title">ABOUT US</h4>
+				<hr>
+				<span class="about_text about_text__bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at velit maximus, molestie est a, tempor magna.</span>
+				<span class="about_text about_text__light">Integer ullamcorper neque eu purus euismod, ac faucibus mauris posuere. Morbi non ultrices ligula. Sed dictum, enim sed ullamcorper feugiat, dui odio vehicula eros, a sollicitudin lorem quam nec sem. Mauris tincidunt feugiat diam convallis pharetra. Nulla facilisis semper laoreet.</span>
+			</div>
+			<img src="img/about-img.png" alt="about us" class="about-img">
+		</section>
+		<section class="form-section">
+			<div class="form-section_container">
+				<img src="img/form-img.png" alt="form-img" class="form-img">
+			<div class="form-block">
+					<h2 class="form_title">BOOK A TABLE</h2>
+					<hr>
+				
+				<form action="#" class="form-block">
+					<input type="text" value="Name" class="form-block_input form-block_elem " onfocus="if (this.value == 'Name') {this.value = '';}"  onblur="if (this.value == '') {this.value = 'Name';}">
+					<input type="text" value="Email" class="form-block_input form-block_elem right" onfocus="if (this.value == 'Email') {this.value = '';}"  onblur="if (this.value == '') {this.value = 'Email';}">
+					<input type="text" value="Phone" class="form-block_input form-block_elem " onfocus="if (this.value == 'Phone') {this.value = '';}"  onblur="if (this.value == '') {this.value = 'Phone';}">
+					<select name="#" id="" class="form-block_select form-block_elem right">
+						<option value="#">People</option>
+						<option value="#">People 2</option>
+						<option value="#">People 3</option>
+						<option value="#">People 4</option> 
+					</select>
+					<input type="text" value="Date(mm/dd)" class="form-block_input form-block_elem " onfocus="if (this.value == 'Date(mm/dd)') {this.value = '';}"  onblur="if (this.value == '') {this.value = 'Date(mm/dd)';}">
+					<select name="#" id="" class="form-block_select form-block_elem right">
+						<option value="#">Time</option>
+						<option value="#">Time 2</option>
+						<option value="#">Time 3</option>
+						<option value="#">Time 4</option>
+					</select>
+					<input type="submit" value="BOOK NOW" class="form-block_submit btn">
+				</form>
+			</div>
+			</div>
+			<div class="form-contact">
+				<span class="form-contact_text">Mon - Fri: <strong>8PM - 10PM</strong>, Sat - Sun: <strong>8PM - 3AM</strong>, Phone: <strong>+40 729 131 637/+40 726 458 782</strong></span>
+		</div>
+		</section>
+		<section class="specialties">
+			<div class="specialties-title-block">
+				<span class="specialties_title">SCPECIALTIES</span>
+			</div>
+			<div class="specialties-block">
+				<img src="img/Rectangle.png" alt="rectangle" class="specialties-img">
+				<div class="specialties-content">
+					<h1 class="s-content_title">CHOCOLATE PANCAKES</h1>
+					<hr>
+					<span class="s-content_text s-content__bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at velit maximus, molestie est a, tempor magna.</span>
+					<span class="s-content_text s-content__normal">Integer ullamcorper neque eu purus euismod, ac faucibus mauris posuere. Morbi non ultrices ligula. Sed dictum, enim sed ullamcorper feugiat, dui odio vehicula eros, a sollicitudin lorem quam nec sem. Mauris tincidunt feugiat diam convallis pharetra. Nulla facilisis semper laoreet.</span>
+				</div>
+			</div>
+		</section>
+		<section class="contact">
+			<div class="contact-block">
+				<h1 class="contact_title">CONTACT</h1>
+				<hr>
+				<span class="contact_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at velit maximus, molestie est a, tempor magna.</span>
+			</div>
+			<div class="contact-form-block">
+				<form action="#" class="contact-form">
+						<input type="text" class="contact_input" value="Name" onfocus="if (this.value == 'Name') {this.value = '';}"  onblur="if (this.value == '') {this.value = 'Name';}">
+						<input type="text" class="contact_input" value="Email" onfocus="if (this.value == 'Email') {this.value = '';}"  onblur="if (this.value == '') {this.value = 'Email';}">
+						<input type="text" class="contact_input" value="Phone" onfocus="if (this.value == 'Phome') {this.value = '';}"  onblur="if (this.value == '') {this.value = 'Phone';}">
+						<textarea name="" id="" placeholder="Message" class="contact_textarea" onfocus="if (this.placeholder == 'Message') {this.placeholder = '';}"  onblur="if (this.placeholder == '') {this.placeholder = 'Message';}"></textarea>
+						<input type="submit" class="contact_submit btn" value="SEND MESSAGE">
+				</form>
+			</div>
+		</section>
+		<footer class="footer">
+			<div class="footer-block"><span class="footer_text"> © Copyright <strong>Fancy Sailor</strong> 2014</span></div>
+		</footer>
+	</div>
+</body>
+</html>
