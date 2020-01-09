@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var obj = [{
+	name: 'Maksim',
+	class: 6,
+	mark: 3
+},{
+	name: 'Anita',
+	class: 3,
+	mark: 2
+},{
+	name: 'Pasha',
+	class: 3,
+	mark: 3
+},{
+	name: 'Lina',
+	class: 5,
+	mark: 5
+},{
+	name: 'Stas',
+	class: 10,
+	mark: 4
+},{
+	name: 'Nikita',
+	class: 1,
+	mark: 1
+},{
+	name: 'Dasha',
+	class: 1,
+	mark: 4
+}];
+//средняя оценка всех участников
+function getSum(mark, className){
+    var result = 0;
+    for (var i=0;i<obj.length;i++) {
+        result += obj[i][mark];
+    }
+    return 'Средняя оценка во всех классах: ' + Math.round(result/obj.length)
+}  
+console.log(getSum("mark","class"));
+//средняя оценка в классе
+function getClassSum(){
+	var res = obj.reduce(function (r, a) {
+        r[a.class] = r[a.class] || [];
+        r[a.class].push(a);
+        return r;
+    }, Object.create(null));
+	for (var key in res){
+		function sum(){
+			var result = 0;
+		    for (var i=0;i<res[key].length;i++) {
+		        result += res[key][i].mark;
+		        var className = res[key][i].class;
+		    }
+    		return console.log('Средняя оценка в ' + className +' классе: ' + Math.round(result/res[key].length))
+		}
+		sum()
+	}
+}
+
+getClassSum()
+
+</script>
+</body>
+</html>

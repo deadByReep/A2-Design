@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var obj1 = {
+	firstName: 'Vasya',
+	lastName: 'Pupkin',
+	father: {
+		firstName: 'Ivan',
+		lastName: 'Pupkin'
+	}
+};
+
+var obj2 = {
+	firstName: 'Vasya',
+	lastName: 'Pupkin',
+	father: {
+		firstName: 'Ivan',
+		lastName: 'Pupkin'
+	}
+};
+
+
+function deepEqual (obj1, obj2){
+   return console.log(JSON.stringify(obj1)===JSON.stringify(obj2));
+}
+deepEqual(obj1,obj2)
+	</script>
+</body>
+</html>
