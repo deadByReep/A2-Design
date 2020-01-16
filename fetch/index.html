@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.username{
+			font-size: 17px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			display: inline-block;
+			cursor: pointer;
+		}
+		.userinfo{
+			margin: 0px 0px 5px 10px;
+			display: inline-block;
+		}
+		.username:hover{
+			color: #58cc35;
+		}
+		.modal {
+		  display: flex;
+		  justify-content: space-between;
+		  overflow: hidden;
+		 
+		  width: 1200px;
+		  max-width: 100%;
+		  
+		  height: 700px;
+		  max-height: 800px;
+		  
+		  position: fixed;
+		  
+		  z-index: 100;
+		  
+		  left: 50%;
+		  top: 50%;
+		  transform: translate(-50%, -50%);
+		  background: white;
+		  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+		}
+		.closed {
+		  display: none;
+		}
+		.posts{
+			max-width: 900px;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			display: flex;
+			-webkit-flex-wrap: wrap;
+			-moz-flex-wrap: wrap;
+			-ms-flex-wrap: wrap;
+			-o-flex-wrap: wrap;
+			flex-wrap: wrap;
+		}
+		.modal-overlay {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  z-index: 50;
+		  
+		  background: rgba(0, 0, 0, 0.6);
+		}
+		.modal-guts {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  overflow: auto;
+		  padding: 20px 50px 20px 20px;
+		}
+
+		.modal .close-button {
+		  position: absolute;
+		  z-index: 1;
+		  top: 10px;
+		  right: 20px;
+		  
+		  border: 0;
+		  background: white;
+		  color: black;
+		  font-size: 1rem;
+		}
+		.post__title{
+			font-size: 15px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+
+		}
+		.post{
+			flex-basis: 400px;
+			margin-right: 20px;
+		}
+		.post_border{
+			border: 1px solid black;
+			border-radius: 8px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+		.comments{
+			display: block;
+			margin-top: 5px;
+			color: blue;
+			cursor: pointer;
+			margin-left: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="modal-overlay closed" id="modal-overlay"></div>
+
+<div class="modal closed" id="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog">
+</div>
+	<script>
+		//получаем юзеров
+		fetch('https://jsonplaceholder.typicode.com/users')
+  		.then(response => response.json())
+  		.then(json => printUsers(json) )
+  		function printUsers(json) {
+  			var doc = document.querySelector('body');
+  			for(var i = 0;i < json.length; i++) {
+  				//рисуем юзеров
+  				doc.innerHTML += `<span class="username" id="${json[i].id}">${json[i].name}</span>` + '<br>';
+  			}
+  			var users = document.querySelectorAll('.username'), modal = document.querySelector("#modal"), modalOverlay = document.querySelector("#modal-overlay"), openButton = document.querySelector("#open-button");
+  			for(var l = 0; l < users.length && json.length; l++){
+  				//открываем модалку
+  			users[l].addEventListener('click', function(){
+  				var focusUser = json[this.id-1].id-1;
+  				modal.classList.toggle("closed");
+	  			modalOverlay.classList.toggle("closed");
+	  			//рисуем информацию
+  				modal.innerHTML +='<div class="info-block">' + `<span class="userinfo">id: ${json[this.id-1].id}</span>` + '</br>' + `<span class="userinfo">name: ${json[this.id-1].name}</span>` + '</br>' + `<span class="userinfo">email: ${json[this.id-1].email}</span>`+ '</br>' + `<span class="userinfo">username: ${json[this.id-1].username}</span>`+ '</br>' + `<span class="userinfo">phone: ${json[this.id-1].phone}</span>`+ '</br>' + `<span class="userinfo">website: ${json[this.id-1].website}</span>` + '</br>' + `<span class="userinfo">city: ${json[this.id-1].address.city}</span>` + '</br>' + `<span class="userinfo">street: ${json[this.id-1].address.street}</span>` + '</br>' + `<span class="userinfo">suite: ${json[this.id-1].address.suite}</span>` + '</br>' + `<span class="userinfo">company: ${json[this.id-1].company.name}</span>` + '</div>' + '<button class="close-button" id="close-button">&#10006;</button>' + '<div class="posts"></div>';
+				var closeBtn = document.getElementById('close-button'), postsBlock = document.querySelector('.posts');
+				//получаем посты
+  				fetch('https://jsonplaceholder.typicode.com/posts')
+  				.then(response => response.json())
+  				.then(posts => getPosts(posts))
+  				function getPosts(posts){
+  					for(var k = 0; k < posts.length; k++) {
+  						if(posts[k].userId == json[focusUser].id){
+  							//рисуем посты
+  							postsBlock.innerHTML += '<div class="post_border post">' + `<h3 class="userinfo post__title">${posts[k].title}</h3>` + `<span class="userinfo">${posts[k].body}</span>` + `<span class="comments active-comment" id="${k+1}">All comments</span>` + `<div id="com-${k+1}"></div>` +  '</div>';
+  						}	
+  					var comments = document.querySelectorAll('.comments');		
+  					}  					
+  					for(var n = 0; n < comments.length; n++){
+  						comments[n].addEventListener('click', function(){
+  							if(this.classList.contains('active-comment')) {
+  								//получаем комментарии
+	  							const request = new XMLHttpRequest();
+								const url = 'https://jsonplaceholder.typicode.com/comments';
+								request.open('GET', url);
+								request.setRequestHeader('Content-Type', 'application/x-www-form-url');
+								request.addEventListener("readystatechange", () => {
+									if (request.readyState === 4 && request.status === 200) {
+		 								var postComment = JSON.parse(request.response);
+		 								for (var m = 0; m < postComment.length; m++){
+		 									//скрываем комментарии
+		 									if(this.id == postComment[m].postId){
+	 											this.innerHTML = 'Hide comments';
+		 										document.getElementById(`com-${this.id}`).innerHTML += `<span class="userinfo">comment: ${postComment[m].name}</span>`;
+		 									}
+		 									this.classList.remove('active-comment')
+		 								}
+	   								}
+								});
+							request.send();
+							//показываем комментарии
+  							} else {
+  								this.innerHTML = 'All comments';
+		 						document.getElementById(`com-${this.id}`).innerHTML = '';
+		 						this.classList.add('active-comment');
+  							}
+  						});
+  					}
+  				}
+  				//закрывем модалку
+				closeBtn.addEventListener("click", function() {
+	 		 		modal.classList.toggle("closed");
+	 		 		modalOverlay.classList.toggle("closed");
+	 		 		modal.innerHTML = '';
+	 		 		postsBlock.innerHTML = '';
+				});
+
+			});
+  			};
+  		}; 
+	</script>
+</body>
+</html>
